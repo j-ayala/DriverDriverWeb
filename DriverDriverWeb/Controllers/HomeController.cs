@@ -39,6 +39,33 @@ namespace DriverDriverWeb.Controllers
             return View(courseList);
         }
 
+        public ActionResult CreateCourseEntry()
+        {
+            CourseModel model = new CourseModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateCourseEntry(CourseModel model)
+        {
+            using (GolfRecordsDBEntities db = new GolfRecordsDBEntities())
+            {
+                tblCours course = new tblCours();
+                course.CourseName = model.CourseName;
+                course.Location = model.Location;
+                course.Price = model.Price;
+                course.TimeSpent = model.TimeSpent;
+                course.BallsLost = model.BallsLost;
+                course.Score = model.Score;
+
+                db.tblCourses.Add(course);
+
+                db.SaveChanges();
+
+                return RedirectToAction("MyTracker");
+            }
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
