@@ -66,6 +66,49 @@ namespace DriverDriverWeb.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            CourseModel model = new CourseModel();
+            using (GolfRecordsDBEntities db = new GolfRecordsDBEntities())
+            {
+                var course = db.tblCourses.FirstOrDefault(x => x.CourseID == id);
+                if (course != null)
+                {
+                    model.ID = course.CourseID;
+                    model.CourseName = course.CourseName;
+                    model.Location = course.Location;
+                    model.Price = course.Price;
+                    model.TimeSpent = course.TimeSpent;
+                    model.BallsLost = course.BallsLost;
+                    model.Score = course.Score;
+
+                }
+            }
+                return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CourseModel model)
+        {
+            using (GolfRecordsDBEntities db = new GolfRecordsDBEntities())
+            {
+                var course = db.tblCourses.FirstOrDefault(x => x.CourseID == model.ID);
+                course.CourseName = model.CourseName;
+                course.Location = model.Location;
+                course.Price = model.Price;
+                course.TimeSpent = model.TimeSpent;
+                course.BallsLost = model.BallsLost;
+                course.Score = model.Score;
+
+                db.Entry(course).State = System.Data.Entity.EntityState.Modified;
+
+                db.SaveChanges();
+
+                return RedirectToAction("MyTracker");
+            }
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

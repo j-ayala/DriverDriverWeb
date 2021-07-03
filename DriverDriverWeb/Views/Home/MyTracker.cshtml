@@ -35,22 +35,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseName)
+            @Html.DisplayFor(modelItem => item.CourseName, "Course Name")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Location)
+            @Html.DisplayFor(modelItem => item.Location, "Location")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @Html.DisplayFor(modelItem => item.Price, "Price")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TimeSpent)
+            @Html.DisplayFor(modelItem => item.TimeSpent, "Time Spent")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BallsLost)
+            @Html.DisplayFor(modelItem => item.BallsLost, "Balls Lost")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Score)
+            @Html.DisplayFor(modelItem => item.Score, "Score")
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
