@@ -144,5 +144,19 @@ namespace DriverDriverWeb.Controllers
             }
             return View(model);
         }
+
+        public ActionResult Delete(int ID)
+        {
+            CourseModel model = new CourseModel();
+            using (GolfRecordsDBEntities db = new GolfRecordsDBEntities())
+            {
+                var course = db.tblCourses.FirstOrDefault(x => x.CourseID == ID);
+                db.tblCourses.Remove(course);
+                db.SaveChanges();
+
+                return RedirectToAction("MyTracker");
+            }
+        }
+
     }
 }
