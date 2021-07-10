@@ -122,5 +122,27 @@ namespace DriverDriverWeb.Controllers
 
             return View();
         }
+
+        public ActionResult Details(int id)
+        {
+            CourseModel model = new CourseModel();
+
+            using (GolfRecordsDBEntities db = new GolfRecordsDBEntities())
+            {
+                var course = db.tblCourses.FirstOrDefault(x => x.CourseID == id);
+                if (course != null)
+                {
+                    model.ID = course.CourseID;
+                    model.CourseName = course.CourseName;
+                    model.Location = course.Location;
+                    model.Price = course.Price;
+                    model.TimeSpent = course.TimeSpent;
+                    model.BallsLost = course.BallsLost;
+                    model.Score = course.Score;
+
+                }
+            }
+            return View(model);
+        }
     }
 }
