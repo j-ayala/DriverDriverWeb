@@ -15,7 +15,7 @@
         <div class="col-md-4">
             <h2>Last course played:</h2>
             <p>
-                <label>@Model.Last()</label>
+                <label>@ViewBag.lastCoursePlayed</label>
 </p>
         </div>
         <div class="col-md-4">
@@ -29,7 +29,6 @@
             <p>
                 <label>@Model.Sum(i => i.BallsLost)</label>
             </p>
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
         </div>
     </center>
 </div>

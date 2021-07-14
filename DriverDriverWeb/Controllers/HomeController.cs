@@ -29,6 +29,7 @@ namespace DriverDriverWeb.Controllers
                     model.Score = course.Score;
 
                     courseList.Add(model);
+                    ViewBag.lastCoursePlayed = course.CourseName.ToString();
                 }
             }
             return View(courseList);

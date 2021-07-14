@@ -8,8 +8,17 @@
 
 <p>
     <a href="~/Home/CreateCourseEntry" class="btn btn-success btn-sm">Create Entry</a>
+    <button id="btnSubmit">Click</button>
 </p>
-<table class="table">
+<p>
+    <label for="holeSelection">Amount played:</label>
+    <select name="holeSelection">
+        <option value="selectPlaceholder">Select...</option>
+        <option value="nineHoles">9 Holes</option>
+        <option value="eighteenHoles">18 Holes</option>
+    </select>
+</p>
+<table name="fullTable" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CourseName)
@@ -62,3 +71,22 @@
     }
 
 </table>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+
+            /*var myBtn = document.getElementById('btnSubmit');
+            myBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Hello');
+            });*/
+
+            $('#btnSubmit').click(function (event) {
+                event.preventDefault();
+                alert("Hello");
+            });
+        });
+    });
+</script>
